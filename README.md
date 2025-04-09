@@ -55,21 +55,61 @@ total_sale FLOAT
 - **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
 
 ```sql
-SELECT COUNT(*) FROM retail_sales;
-SELECT COUNT(DISTINCT customer_id) FROM retail_sales;
-SELECT DISTINCT category FROM retail_sales;
+-- Data exploration and cleaning
+-- records count
+SELECT COUNT(*)
+FROM retail_sales;
 
-SELECT * FROM retail_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
+-- Customer Count: Find out how many unique customers are in the dataset.
+SELECT 
+    COUNT(DISTINCT customer_id) AS unique_customers
+FROM
+    retail_sales;
+    
+-- Category Count: Identify all unique product categories in the dataset.
+SELECT 
+    COUNT(DISTINCT category) AS categories
+FROM
+    retail_sales;
 
-DELETE FROM retail_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
+-- checking the product categories
+SELECT DISTINCT
+    category
+FROM
+    retail_sales;
+
+-- Null value check
+SELECT 
+    *
+FROM
+    retail_sales
+WHERE
+    transactions_id IS NULL
+        OR sale_date IS NULL
+        OR sale_time IS NULL
+        OR customer_id IS NULL
+        OR gender IS NULL
+        OR age IS NULL
+        OR category IS NULL
+        OR quantiy IS NULL
+        OR price_per_unit IS NULL
+        OR cogs IS NULL
+        OR total_sale IS NULL;
+        
+-- Delete Null rows
+DELETE FROM retail_sales 
+WHERE
+    transactions_id IS NULL
+    OR sale_date IS NULL
+    OR sale_time IS NULL
+    OR customer_id IS NULL
+    OR gender IS NULL
+    OR age IS NULL
+    OR category IS NULL
+    OR quantiy IS NULL
+    OR price_per_unit IS NULL
+    OR cogs IS NULL
+    OR total_sale IS NULL;
 ```
 
 ### 3. Data Analysis & Findings
