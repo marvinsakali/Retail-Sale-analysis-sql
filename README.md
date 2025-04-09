@@ -244,6 +244,7 @@ FROM retail_sales
 ;
 
 ```
+
 11. **Write a SQL query to find the top 10 customers who have made the most purchases:
 ```sql
 SELECT DISTINCT
